@@ -53,7 +53,7 @@ class EasyMail(object):
         try:
             server = smtplib.SMTP()
             server.connect(self.mail_host)
-    #         server.starttls()
+            server.starttls()
             server.login(self.mail_user, self.mail_pass)
             server.sendmail(me, to_list, msg.as_string())
             server.close()

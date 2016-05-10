@@ -1,10 +1,10 @@
 # coding: UTF-8
 
 import MySQLdb
-import sae.const
+
 
 def getConn():
-    conn=MySQLdb.connect(host=sae.const.MYSQL_HOST, user=sae.const.MYSQL_USER, passwd=sae.const.MYSQL_PASS, db=sae.const.MYSQL_DB, port=int(sae.const.MYSQL_PORT), charset='utf8')
+    conn=MySQLdb.connect(host='localhost', user='root', passwd='milk', db='test', port=3306,)
     return conn
 
 def getCursor(conn):

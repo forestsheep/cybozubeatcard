@@ -4,7 +4,7 @@ from com.boccaro.utils import stringutil
 
 def sendmail(mailcontext):
     e = easymail.EasyMail()
-    e.mailto_list = ['bxu@cybozu.net.cn', 'forestsheep@163.com']
+    e.mailto_list = ['bxu@cybozu.net.cn', 'forestsheep@163.com', 'forestsheep911@163.com', 'forestsheep911@gmail.com']
     e.mail_host = "smtp.163.com"  # 设置服务器
     e.mail_user = "forestsheep911@163.com"  # 用户名
     e.mail_pass = "911911f911"  # 口令 

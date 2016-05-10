@@ -29,6 +29,8 @@ class WeixinInterface:
         hashcode=sha1.hexdigest()
         if hashcode == signature:       # 如果是来自微信的请求，则回复echostr
             return echostr              # print "true"
+        else:
+            return "not from weixin"
 
     def POST(self):
         str_xml=web.data()

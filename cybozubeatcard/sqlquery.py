@@ -9,13 +9,13 @@ def savetest(wx_id, note):
 
 def writeLog(logMessage):
     sql = 'insert into cbc_log(message) values(%s)'
-    prm = (logMessage)
+    prm = [logMessage]
     rows = mysqlconn.execute(sql, prm)
     return rows
 
 def writeAccessLog(logMessage):
     sql = 'INSERT INTO cbc_api_log(note) VALUES(%s)'
-    prm = (logMessage)
+    prm = [logMessage]
     rows = mysqlconn.execute(sql, prm)
     return rows
 
@@ -97,7 +97,7 @@ def deleteUesrExceptionDate(wid, date):
 
 def getBeatCardUsers(time):
     sql = 'SELECT login_name, login_pw FROM cbc_users WHERE cbc_users.enable AND cbc_users.status = 1 AND cbc_users.daka_time = %s AND cbc_users.weixin_id IN (SELECT T1.weixin_id FROM(SELECT weixin_id FROM cbc_users WHERE DAYOFWEEK(curdate()) != 1 AND DAYOFWEEK(curdate()) != 7 AND (SELECT count(*) = 0 FROM cbc_except_day WHERE cbc_except_day.date=curdate() AND cbc_except_day.priority = 10 AND cbc_except_day.beat = 0) OR ((DAYOFWEEK(curdate()) = 1 OR DAYOFWEEK(curdate()) = 7) AND (SELECT count(*) = 1 FROM cbc_except_day WHERE cbc_except_day.date=curdate() AND cbc_except_day.priority = 10 AND cbc_except_day.beat = 1)) UNION (SELECT cbc_users.weixin_id FROM cbc_users, cbc_except_day WHERE cbc_users.weixin_id = cbc_except_day.weixin_id AND cbc_except_day.date = curdate() AND cbc_except_day.priority = 20 AND cbc_except_day.beat = 1))T1 WHERE T1.weixin_id NOT IN (SELECT cbc_users.weixin_id FROM cbc_users, cbc_except_day WHERE cbc_users.weixin_id = cbc_except_day.weixin_id AND cbc_except_day.date = curdate() AND cbc_except_day.priority = 20 AND cbc_except_day.beat = 0))'
-    prm = (time)
+    prm = [time]
     rows = mysqlconn.select(sql, prm)
     return rows
 
@@ -115,7 +115,7 @@ def getBeatCardUsersTest(date):
 
 def getBeatCardUsersStatus(time):
     sql = 'SELECT cbc_users.mail, cbc_beat_report.success FROM cbc_users, cbc_beat_report WHERE cbc_users.enable AND cbc_users.daka_time = %s AND cbc_users.login_name = cbc_beat_report.login_name AND DATE(cbc_beat_report.date_time) = curdate() AND cbc_users.weixin_id IN (SELECT T1.weixin_id FROM(SELECT weixin_id FROM cbc_users WHERE DAYOFWEEK(curdate()) != 1 AND DAYOFWEEK(curdate()) != 7 AND (SELECT count(*) = 0 FROM cbc_except_day WHERE cbc_except_day.date=curdate() AND cbc_except_day.priority = 10 AND cbc_except_day.beat = 0) OR ((DAYOFWEEK(curdate()) = 1 OR DAYOFWEEK(curdate()) = 7) AND (SELECT count(*) = 1 FROM cbc_except_day WHERE cbc_except_day.date=curdate() AND cbc_except_day.priority = 10 AND cbc_except_day.beat = 1)) UNION (SELECT cbc_users.weixin_id FROM cbc_users, cbc_except_day WHERE cbc_users.weixin_id = cbc_except_day.weixin_id AND cbc_except_day.date = curdate() AND cbc_except_day.priority = 20 AND cbc_except_day.beat = 1))T1 WHERE T1.weixin_id NOT IN (SELECT cbc_users.weixin_id FROM cbc_users, cbc_except_day WHERE cbc_users.weixin_id = cbc_except_day.weixin_id AND cbc_except_day.date = curdate() AND cbc_except_day.priority = 20 AND cbc_except_day.beat = 0))'
-    prm = (time)
+    prm = [time]
     rows = mysqlconn.select(sql, prm)
     return rows
 
@@ -131,7 +131,7 @@ def updateHoliday(date, beat):
 
 def getPersonalPlanThisYear(wid):
     sql = 'SELECT date, beat FROM cbc_except_day WHERE weixin_id = %s and date >= curdate() and date < CONCAT(YEAR(curdate()) + 1, \'-01-01\')'
-    prm = (wid)
+    prm = [wid]
     rows = mysqlconn.select(sql, prm)
     return rows
 
@@ -143,13 +143,13 @@ def getApiHistory():
 
 def getPersonalInfo(wid):
     sql = 'SELECT login_name, login_pw, daka_time, enable FROM cbc_users WHERE weixin_id = %s'
-    prm = (wid)
+    prm = [wid]
     rows = mysqlconn.select(sql, prm)
     return rows
 
 def getPersonalInfoBySid(sid):
     sql = 'SELECT login_name, login_pw, daka_time, enable FROM cbc_users WHERE sid = %s'
-    prm = (sid)
+    prm = [sid]
     rows = mysqlconn.select(sql, prm)
     return rows
 

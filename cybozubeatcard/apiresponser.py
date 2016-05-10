@@ -5,7 +5,6 @@ import time
 import urllib2
 import request
 from lxml import etree
-from sae.taskqueue import Task, TaskQueue
 import mailtest
 
 def apiRoute(jsonObj):
@@ -37,6 +36,8 @@ def apiRoute(jsonObj):
         elif apiName == u'beatReport':
             usersList = jb.get(u'users')
             return beatReport(usersList)
+        elif apiName == u'mail':
+            mailtest.sendmail(u'testmail')
         else:
             return 'not found api.'
     except Exception, e:
@@ -57,9 +58,9 @@ def getBeatCardUsers(userAgent):
         userDict = dict()
         for j in range(len(dbdataTuple[i])):
             if j == 0:
-                userDict['loginName'] = eval(repr(dbdataTuple[i][j])[1:])
+                userDict['loginName'] = dbdataTuple[i][j]
             if j == 1:
-                userDict['loginPassWord'] = eval(repr(dbdataTuple[i][j])[1:])
+                userDict['loginPassWord'] = dbdataTuple[i][j]
                 usersList.append(userDict)
     responseDict = dict(users=usersList)
     responseString = json.dumps(responseDict)
@@ -80,9 +81,9 @@ def getBeatCardUsersTest(date):
         userDict = dict()
         for j in range(len(dbdataTuple[i])):
             if j == 0:
-                userDict['loginName'] = eval(repr(dbdataTuple[i][j])[1:])
+                userDict['loginName'] = dbdataTuple[i][j]
             if j == 1:
-                userDict['loginPassWord'] = eval(repr(dbdataTuple[i][j])[1:])
+                userDict['loginPassWord'] = dbdataTuple[i][j]
             if j == 2:
                 userDict['time'] = dbdataTuple[i][j]
                 usersList.append(userDict)
@@ -159,18 +160,6 @@ def readHoliday_cybozush():
 
 def timeCheck():
     return request.grnliteLoginCheck()
-
-def forceBeat():
-    queue = TaskQueue('batchgrn')
-    usersString = getBeatCardUsers()
-    sqlquery.writeLog(usersString)
-    usersDict = json.loads(usersString)
-    usersList = usersDict.get(u'users')
-    for userDict in usersList:
-        reqUserDict = dict()
-        reqUserDict['loginName'] = eval(repr(userDict.get(u'loginName'))[1:])
-        reqUserDict['loginPassWord'] = eval(repr(userDict.get(u'loginPassWord'))[1:])
-        queue.add(Task('/batchaccess', json.dumps(reqUserDict)))
 
 def checkClient():
     rows = sqlquery.getApiHistory()
