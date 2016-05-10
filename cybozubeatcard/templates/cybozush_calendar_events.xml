@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope 
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:base="http://wsdl.cybozu.co.jp/base/2008">
+    <soap:Header>
+        <vendor>Cybozu</vendor>
+        <product>Garoon</product>
+        <product_type>2</product_type>
+        <version>4.2.0</version>
+        <apiversion>1.6.0</apiversion>
+    </soap:Header>
+    <soap:Body>
+        <base:BaseGetCalendarEventsResponse>
+            <returns>
+                <calendar_event date="2012-01-01" content="元旦" type="public_holiday"/>
+                <calendar_event date="2012-01-02" content="元旦" type="public_holiday"/>
+                <calendar_event date="2012-01-03" content="元旦" type="public_holiday"/>
+                <calendar_event date="2012-01-21" content="春節Change" type="public_workday"/>
+                <calendar_event date="2012-01-22" content="春節" type="public_holiday"/>
+                <calendar_event date="2012-01-23" content="春節" type="public_holiday"/>
+                <calendar_event date="2012-01-24" content="春節" type="public_holiday"/>
+                <calendar_event date="2012-01-25" content="春節" type="public_holiday"/>
+                <calendar_event date="2012-01-26" content="春節" type="public_holiday"/>
+                <calendar_event date="2012-01-27" content="春節" type="public_holiday"/>
+                <calendar_event date="2012-01-28" content="春節" type="public_holiday"/>
+                <calendar_event date="2012-01-29" content="春節Change" type="public_workday"/>
+                <calendar_event date="2012-03-31" content="清明節Change" type="public_workday"/>
+                <calendar_event date="2012-04-01" content="清明節Change" type="public_workday"/>
+                <calendar_event date="2012-04-02" content="清明節" type="public_holiday"/>
+                <calendar_event date="2012-04-03" content="清明節" type="public_holiday"/>
+                <calendar_event date="2012-04-04" content="清明節" type="public_holiday"/>
+                <calendar_event date="2012-04-28" content="勞動節Change" type="public_workday"/>
+                <calendar_event date="2012-04-29" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2012-04-30" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2012-05-01" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2012-06-22" content="端午節" type="public_holiday"/>
+                <calendar_event date="2012-06-23" content="端午節" type="public_holiday"/>
+                <calendar_event date="2012-06-24" content="端午節" type="public_holiday"/>
+                <calendar_event date="2012-09-29" content="國慶節Change" type="public_workday"/>
+                <calendar_event date="2012-09-30" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2012-10-01" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2012-10-02" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2012-10-03" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2012-10-04" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2012-10-05" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2012-10-06" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2012-10-07" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2013-01-01" content="元旦" type="public_holiday"/>
+                <calendar_event date="2013-01-02" content="元旦" type="public_holiday"/>
+                <calendar_event date="2013-01-03" content="元旦" type="public_holiday"/>
+                <calendar_event date="2013-01-05" content="元旦Change" type="public_workday"/>
+                <calendar_event date="2013-01-06" content="元旦Change" type="public_workday"/>
+                <calendar_event date="2013-02-09" content="春節" type="public_holiday"/>
+                <calendar_event date="2013-02-10" content="春節" type="public_holiday"/>
+                <calendar_event date="2013-02-11" content="春節" type="public_holiday"/>
+                <calendar_event date="2013-02-12" content="春節" type="public_holiday"/>
+                <calendar_event date="2013-02-13" content="春節" type="public_holiday"/>
+                <calendar_event date="2013-02-14" content="春節" type="public_holiday"/>
+                <calendar_event date="2013-02-15" content="春節" type="public_holiday"/>
+                <calendar_event date="2013-02-16" content="春節Change" type="public_workday"/>
+                <calendar_event date="2013-02-17" content="春節Change" type="public_workday"/>
+                <calendar_event date="2013-04-04" content="清明節" type="public_holiday"/>
+                <calendar_event date="2013-04-05" content="清明節" type="public_holiday"/>
+                <calendar_event date="2013-04-06" content="清明節" type="public_holiday"/>
+                <calendar_event date="2013-04-07" content="清明節Change" type="public_workday"/>
+                <calendar_event date="2013-04-27" content="勞動節Change" type="public_workday"/>
+                <calendar_event date="2013-04-28" content="勞動節Change" type="public_workday"/>
+                <calendar_event date="2013-04-29" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2013-04-30" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2013-05-01" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2013-09-19" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2013-09-20" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2013-09-21" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2013-09-22" content="中秋節Change" type="public_workday"/>
+                <calendar_event date="2013-09-29" content="國慶節Change" type="public_workday"/>
+                <calendar_event date="2013-10-01" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2013-10-02" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2013-10-03" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2013-10-04" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2013-10-05" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2013-10-06" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2013-10-07" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2013-10-12" content="國慶節Change" type="public_workday"/>
+                <calendar_event date="2013-06-12" content="端午節" type="public_holiday"/>
+                <calendar_event date="2014-01-01" content="元旦" type="public_holiday"/>
+                <calendar_event date="2014-01-26" content="春節Change" type="public_workday"/>
+                <calendar_event date="2014-01-31" content="春節" type="public_holiday"/>
+                <calendar_event date="2014-02-01" content="春節" type="public_holiday"/>
+                <calendar_event date="2014-02-02" content="春節" type="public_holiday"/>
+                <calendar_event date="2014-02-03" content="春節" type="public_holiday"/>
+                <calendar_event date="2014-02-04" content="春節" type="public_holiday"/>
+                <calendar_event date="2014-02-05" content="春節" type="public_holiday"/>
+                <calendar_event date="2014-02-06" content="春節" type="public_holiday"/>
+                <calendar_event date="2014-02-08" content="春節Change" type="public_workday"/>
+                <calendar_event date="2014-04-05" content="清明節" type="public_holiday"/>
+                <calendar_event date="2014-04-06" content="清明節" type="public_holiday"/>
+                <calendar_event date="2014-04-07" content="清明節" type="public_holiday"/>
+                <calendar_event date="2014-05-01" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2014-05-02" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2014-05-03" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2014-05-04" content="勞動節Change" type="public_workday"/>
+                <calendar_event date="2014-05-31" content="端午節" type="public_holiday"/>
+                <calendar_event date="2014-06-01" content="端午節" type="public_holiday"/>
+                <calendar_event date="2014-06-02" content="端午節" type="public_holiday"/>
+                <calendar_event date="2014-09-06" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2014-09-07" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2014-09-08" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2014-09-28" content="國慶節Change" type="public_workday"/>
+                <calendar_event date="2014-10-01" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2014-10-02" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2014-10-03" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2014-10-04" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2014-10-05" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2014-10-06" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2014-10-07" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2014-10-11" content="國慶節Change" type="public_workday"/>
+                <calendar_event date="2015-01-01" content="元旦" type="public_holiday"/>
+                <calendar_event date="2015-01-02" content="元旦" type="public_holiday"/>
+                <calendar_event date="2015-01-03" content="元旦" type="public_holiday"/>
+                <calendar_event date="2015-01-04" content="元旦Change" type="public_workday"/>
+                <calendar_event date="2015-02-15" content="春節Change" type="public_workday"/>
+                <calendar_event date="2015-02-18" content="春節" type="public_holiday"/>
+                <calendar_event date="2015-02-19" content="春節" type="public_holiday"/>
+                <calendar_event date="2015-02-20" content="春節" type="public_holiday"/>
+                <calendar_event date="2015-02-21" content="春節" type="public_holiday"/>
+                <calendar_event date="2015-02-22" content="春節" type="public_holiday"/>
+                <calendar_event date="2015-02-23" content="春節" type="public_holiday"/>
+                <calendar_event date="2015-02-24" content="春節" type="public_holiday"/>
+                <calendar_event date="2015-02-28" content="春節Change" type="public_workday"/>
+                <calendar_event date="2015-04-04" content="清明節" type="public_holiday"/>
+                <calendar_event date="2015-04-05" content="清明節" type="public_holiday"/>
+                <calendar_event date="2015-04-06" content="清明節" type="public_holiday"/>
+                <calendar_event date="2015-05-01" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2015-05-02" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2015-05-03" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2015-06-20" content="端午節" type="public_holiday"/>
+                <calendar_event date="2015-06-21" content="端午節" type="public_holiday"/>
+                <calendar_event date="2015-06-22" content="端午節" type="public_holiday"/>
+                <calendar_event date="2015-09-27" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2015-10-01" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2015-10-02" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2015-10-03" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2015-10-04" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2015-10-05" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2015-10-06" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2015-10-07" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2015-10-10" content="國慶節Change" type="public_workday"/>
+                <calendar_event date="2015-09-03" content="平和記念日" type="public_holiday"/>
+                <calendar_event date="2015-09-06" content="出勤" type="public_workday"/>
+                <calendar_event date="2015-09-04" content="振替休日" type="public_holiday"/>
+                <calendar_event date="2016-01-01" content="元旦" type="public_holiday"/>
+                <calendar_event date="2016-01-02" content="元旦" type="public_holiday"/>
+                <calendar_event date="2016-01-03" content="元旦" type="public_holiday"/>
+                <calendar_event date="2016-02-06" content="春節Change" type="public_workday"/>
+                <calendar_event date="2016-02-07" content="春節" type="public_holiday"/>
+                <calendar_event date="2016-02-08" content="春節" type="public_holiday"/>
+                <calendar_event date="2016-02-09" content="春節" type="public_holiday"/>
+                <calendar_event date="2016-02-10" content="春節" type="public_holiday"/>
+                <calendar_event date="2016-02-11" content="春節" type="public_holiday"/>
+                <calendar_event date="2016-02-12" content="春節" type="public_holiday"/>
+                <calendar_event date="2016-02-13" content="春節" type="public_holiday"/>
+                <calendar_event date="2016-02-14" content="春節Change" type="public_workday"/>
+                <calendar_event date="2016-04-02" content="清明節" type="public_holiday"/>
+                <calendar_event date="2016-04-03" content="清明節" type="public_holiday"/>
+                <calendar_event date="2016-04-04" content="清明節" type="public_holiday"/>
+                <calendar_event date="2016-04-30" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2016-05-01" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2016-05-02" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2016-06-09" content="端午節" type="public_holiday"/>
+                <calendar_event date="2016-06-10" content="端午節" type="public_holiday"/>
+                <calendar_event date="2016-06-11" content="端午節" type="public_holiday"/>
+                <calendar_event date="2016-06-12" content="端午節Change" type="public_workday"/>
+                <calendar_event date="2016-09-15" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2016-09-16" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2016-09-17" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2016-09-18" content="中秋節Change" type="public_workday"/>
+                <calendar_event date="2016-10-01" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2016-10-02" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2016-10-03" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2016-10-04" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2016-10-05" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2016-10-06" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2016-10-07" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2016-10-08" content="國慶節Change" type="public_workday"/>
+                <calendar_event date="2016-10-09" content="國慶節Change" type="public_workday"/>
+            </returns>
+        </base:BaseGetCalendarEventsResponse>
+    </soap:Body>
+</soap:Envelope>
