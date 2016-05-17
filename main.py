@@ -3,11 +3,13 @@
 import web
 from cybozubeatcard.weixinInterface import WeixinInterface
 from cybozubeatcard.api import Api
+from cybozubeatcard.safecheckrun import SafeCheckRun
 
 urls = (
     '/msn', 'index',
     '/weixin', 'WeixinInterface',
-    '/api', 'Api'
+    '/api', 'Api',
+    '/safecheckrun', 'SafeCheckRun'
 )
 
 class index:

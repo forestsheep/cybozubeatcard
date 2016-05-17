@@ -4,7 +4,7 @@ import MySQLdb
 
 
 def getConn():
-    conn=MySQLdb.connect(host='localhost', user='root', passwd='milk', db='test', port=3306,)
+    conn=MySQLdb.connect(host='localhost', user='root', passwd='milk', db='cbc', port=3306,)
     return conn
 
 def getCursor(conn):

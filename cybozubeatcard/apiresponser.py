@@ -159,7 +159,7 @@ def readHoliday_cybozush():
     return str(count) + u'inserted.'
 
 def timeCheck():
-    return request.grnliteLoginCheck()
+    sqlquery.writeLog("cbc log")
 
 def checkClient():
     rows = sqlquery.getApiHistory()
