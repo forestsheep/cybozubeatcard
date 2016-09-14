@@ -158,14 +158,22 @@ def setShortId(sid, wid):
     prm = (sid, wid)
     rows = mysqlconn.execute(sql, prm)
 
-def insertBeatReport(loginName, success):
+def insert_beat_report(loginName, success):
     sql = 'INSERT INTO cbc_beat_report(login_name, success) VALUES (%s, %s)'
     prm = (loginName, success)
     rows = mysqlconn.execute(sql, prm)
     return rows
 
+
 def setMail(wid, mail):
     sql = 'UPDATE cbc_users set mail = %s where weixin_id = %s'
     prm = (mail, wid)
     rows = mysqlconn.execute(sql, prm)
+    return rows
+
+
+def get_mail(login_name):
+    sql = 'SELECT mail FROM cbc_users WHERE login_name = %s'
+    prm = [login_name]
+    rows = mysqlconn.select(sql, prm)
     return rows
