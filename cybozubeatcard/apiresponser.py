@@ -36,7 +36,7 @@ def apiRoute(jsonObj):
             return getMyInfo(sid)
         elif apiName == u'beatReport':
             usersList = jb.get(u'users')
-            return beatReport(usersList)
+            return beat_report(usersList)
         elif apiName == u'mail':
             mailtest.sendmail(u'testmail')
         else:
@@ -190,8 +190,8 @@ def beat_report(users_list):
             user_name_string = user_dict.get(u'loginName')
             success_bool = user_dict.get(u'success')
             sqlquery.insert_beat_report(user_name_string, success_bool)
-            mailadd = sqlquery.get_mail(user_name_string)[0][0]
-            send_warning_mail(mailadd, success_bool)
+            mailadd = sqlquery.get_mail(str(user_name_string))
+            send_warning_mail(mailadd[0][0], success_bool)
         return u'report recived.'
     else:
         sqlquery.write_log('beatReport: usersList is None')
@@ -214,7 +214,7 @@ def send_warning_mail(mailto, success_int):
         else:
             e.mail_subject = u'糟糕今天哒咔失败了'
             e.mail_context = u'赶快找点补救办法吧，譬如：自己用kunai打，找人代打，'
-            e.mail_context += u'祈祷别人装了chrome插件已帮你打好，等等。'
+            e.mail_context += u'祈祷他人装了chrome插件已帮你打好，等等。'
         e.send()
     except Exception, e:
         sqlquery.writeLog(str(e))
