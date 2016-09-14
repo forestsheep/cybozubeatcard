@@ -1,14 +1,15 @@
 # coding: UTF-8
-'''
+"""
 Created on 2014-9-25
 
 @author: bxu
-'''
+"""
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 
-def sendMailTest():
+
+def send_mail_test():
     e = EasyMail()
     e.mailto_list = ['forestsheep911@163.com'] 
     e.mail_host = "smtp.163.com"  # 设置服务器
@@ -19,6 +20,7 @@ def sendMailTest():
     e.mail_context = 'abcdefghijklmnopqrstuvwxyz'
     e.send()
 
+
 class EasyMail(object):
     mailto_list = None
     mail_host = None
@@ -28,6 +30,7 @@ class EasyMail(object):
     mail_postfix = ''
     mail_subject = ''
     mail_context = ''
+    ssl_port = None
 
     def __init__(self):
         pass
@@ -39,21 +42,24 @@ class EasyMail(object):
             print 'mail send failed'
         
     def send_mail(self, to_list, sub, content):
-        me = ''
         if "@" in self.mail_user:
             me = self.mail_user
         else:
             me = self.mail_user + "@" + self.mail_postfix
-        if not self.mail_sender_name is None:
-            me =  ("%s<" + me + ">") % (Header(self.mail_sender_name,'utf-8'),)
+        if self.mail_sender_name is not None:
+            me = ("%s<" + me + ">") % (Header(self.mail_sender_name, 'utf-8'),)
         msg = MIMEText(content, _subtype='plain', _charset='utf-8')
         msg['Subject'] = sub
         msg['From'] = me
         msg['To'] = ";".join(to_list)
         try:
-            server = smtplib.SMTP()
-            server.connect(self.mail_host)
-            server.starttls()
+            if self.ssl_port is None:
+                server = smtplib.SMTP()
+                server.connect(self.mail_host)
+                server.starttls()
+            else:
+                server = smtplib.SMTP_SSL()
+                server.connect(self.mail_host + ":" + str(self.ssl_port))
             server.login(self.mail_user, self.mail_pass)
             server.sendmail(me, to_list, msg.as_string())
             server.close()
