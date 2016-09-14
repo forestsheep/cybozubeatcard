@@ -6,6 +6,7 @@ import urllib2
 import request
 from lxml import etree
 import mailtest
+from com.boccaro.network.email import easymail
 
 def apiRoute(jsonObj):
     try:
@@ -182,14 +183,38 @@ def getMyInfo(sid):
             infoDict['enable'] = dbdataTuple[0][i]
     return json.dumps(infoDict)
 
-def beatReport(usersList):
-    if usersList != None:
-        for i in range(len(usersList)):
-           userDict = usersList[i]
-           userNameString = userDict.get(u'loginName')
-           successBool = userDict.get(u'success')
-           sqlquery.insertBeatReport(userNameString, successBool)
+def beat_report(users_list):
+    if users_list is not None:
+        for i in range(len(users_list)):
+            user_dict = users_list[i]
+            user_name_string = user_dict.get(u'loginName')
+            success_bool = user_dict.get(u'success')
+            sqlquery.insert_beat_report(user_name_string, success_bool)
+            mailadd = sqlquery.get_mail(user_name_string)[0][0]
+            send_warning_mail(mailadd, success_bool)
         return u'report recived.'
     else:
-        sqlquery.writeLog('beatReport: usersList is None')
+        sqlquery.write_log('beatReport: usersList is None')
         return u'usersList is None.'
+
+
+def send_warning_mail(mailto, success_int):
+    try:
+        e = easymail.EasyMail()
+        e.mailto_list = [mailto]
+        e.mail_host = "smtp.gmail.com"  # 设置服务器
+        e.ssl_port = 465
+        e.mail_user = "cybozushmobile@gmail.com"  # 用户名
+        e.mail_pass = "cybozu123"  # 口令
+        e.mail_postfix = "gmail.com"  # 发件箱的后缀
+        e.mail_sender_name = u'高高兴兴上班社团'
+        if success_int == 1:
+            e.mail_subject = u'哒咔成功'
+            e.mail_context = u'尽情的享受悠闲的早晨吧。'
+        else:
+            e.mail_subject = u'糟糕今天哒咔失败了'
+            e.mail_context = u'赶快找点补救办法吧，譬如：自己用kunai打，找人代打，'
+            e.mail_context += u'祈祷别人装了chrome插件已帮你打好，等等。'
+        e.send()
+    except Exception, e:
+        sqlquery.writeLog(str(e))
