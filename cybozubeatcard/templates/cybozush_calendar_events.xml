@@ -8,8 +8,8 @@
         <vendor>Cybozu</vendor>
         <product>Garoon</product>
         <product_type>2</product_type>
-        <version>4.2.0</version>
-        <apiversion>1.6.0</apiversion>
+        <version>4.4.0</version>
+        <apiversion>1.8.0</apiversion>
     </soap:Header>
     <soap:Body>
         <base:BaseGetCalendarEventsResponse>
@@ -185,6 +185,38 @@
                 <calendar_event date="2016-10-07" content="國慶節" type="public_holiday"/>
                 <calendar_event date="2016-10-08" content="國慶節Change" type="public_workday"/>
                 <calendar_event date="2016-10-09" content="國慶節Change" type="public_workday"/>
+                <calendar_event date="2016-12-31" content="元旦" type="public_holiday"/>
+                <calendar_event date="2017-01-01" content="元旦" type="public_holiday"/>
+                <calendar_event date="2017-01-02" content="元旦" type="public_holiday"/>
+                <calendar_event date="2017-01-22" content="春節Change" type="public_workday"/>
+                <calendar_event date="2017-01-27" content="春節" type="public_holiday"/>
+                <calendar_event date="2017-01-28" content="春節" type="public_holiday"/>
+                <calendar_event date="2017-01-29" content="春節" type="public_holiday"/>
+                <calendar_event date="2017-01-30" content="春節" type="public_holiday"/>
+                <calendar_event date="2017-01-31" content="春節" type="public_holiday"/>
+                <calendar_event date="2017-02-01" content="春節" type="public_holiday"/>
+                <calendar_event date="2017-02-02" content="春節" type="public_holiday"/>
+                <calendar_event date="2017-02-04" content="春節Change" type="public_workday"/>
+                <calendar_event date="2017-04-01" content="清明節Change" type="public_workday"/>
+                <calendar_event date="2017-04-02" content="清明節" type="public_holiday"/>
+                <calendar_event date="2017-04-03" content="清明節" type="public_holiday"/>
+                <calendar_event date="2017-04-04" content="清明節" type="public_holiday"/>
+                <calendar_event date="2017-04-29" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2017-04-30" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2017-05-01" content="勞動節" type="public_holiday"/>
+                <calendar_event date="2017-05-27" content="端午節Change" type="public_workday"/>
+                <calendar_event date="2017-05-28" content="端午節" type="public_holiday"/>
+                <calendar_event date="2017-05-29" content="端午節" type="public_holiday"/>
+                <calendar_event date="2017-05-30" content="端午節" type="public_holiday"/>
+                <calendar_event date="2017-09-30" content="中秋節Change" type="public_workday"/>
+                <calendar_event date="2017-10-01" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2017-10-02" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2017-10-03" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2017-10-04" content="中秋節" type="public_holiday"/>
+                <calendar_event date="2017-10-05" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2017-10-06" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2017-10-07" content="國慶節" type="public_holiday"/>
+                <calendar_event date="2017-10-08" content="國慶節" type="public_holiday"/>
             </returns>
         </base:BaseGetCalendarEventsResponse>
     </soap:Body>

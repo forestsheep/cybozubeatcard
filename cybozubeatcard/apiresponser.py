@@ -1,4 +1,5 @@
 # encoding: utf-8
+import os
 import json
 import sqlquery
 import time
@@ -92,9 +93,10 @@ def getBeatCardUsersTest(date):
     return json.dumps(responseDict)
 
 def readHoliday():
-    url = 'https://grn.cybozu.net.cn/cgi-bin/cbgrn/grn.cgi/cbpapi/base/api?c=28zd4'
+    url = 'https://cybozush.cybozu.cn/g/cbpapi/base/api'
     data = ''
-    file = open('cybozubeatcard/templates/holiday_request.txt')
+    app_root = os.path.dirname(__file__)
+    file = open(app_root + '/templates/holiday_request.txt')
 
     while 1:
         lines = file.readlines(100000)
@@ -103,7 +105,7 @@ def readHoliday():
         for line in lines:
             data += line
 
-    headers = {'Host':'grn.cybozu.net.cn','User-Agent':'NuSOAP/0.7.3 (1.114)','X-Cybozu-Mobile-Android':'aaa','Content-Type':'application/soap+xml; charset=UTF-8','SOAPAction':'"BaseGetCalendarEvents"'}
+    headers = {'Host':'cybozush.cybozu.cn','User-Agent':'NuSOAP/0.7.3 (1.114)','X-Cybozu-Mobile-Android':'aaa','Content-Type':'application/soap+xml; charset=UTF-8','SOAPAction':'"BaseGetCalendarEvents"'}
     req = urllib2.Request(url, data, headers)
     response = urllib2.urlopen(req)
     rs = response.read()
@@ -130,7 +132,8 @@ def readHoliday():
 
 def readHoliday_cybozush():
     data = ''
-    file = open('cybozubeatcard/templates/cybozush_calendar_events.xml')
+    app_root = os.path.dirname(__file__)
+    file = open(app_root + '/templates/cybozush_calendar_events.xml')
 
     while 1:
         lines = file.readlines(100000)
