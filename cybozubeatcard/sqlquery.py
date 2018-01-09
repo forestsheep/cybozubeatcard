@@ -1,5 +1,13 @@
 #coding:UTF-8
 import mysqlconn
+import sqlite3
+
+def regunqid(wx_id, id):
+    conn = sqlite3.connect("test.db")
+    c = conn.cursor()
+    sql = 'insert into cbc_users(weixin_id, login_name) values(%s, %s) ON DUPLICATE KEY UPDATE login_name =%s'
+    c.execute(sql,(wx_id, id))
+    return rows
 
 def savetest(wx_id, note):
     sql = 'insert into test(name, note) values(%s, %s)'

@@ -1,36 +1,37 @@
 # coding: UTF-8
 
-import MySQLdb
+# import MySQLdb
 
 
 def getConn():
-    conn=MySQLdb.connect(host='localhost', user='root', passwd='milk', db='cbc', port=3306,)
-    return conn
+    # conn=MySQLdb.connect(host='localhost', user='root', passwd='milk', db='cbc', port=3306,)
+    # return conn
+    pass
 
-def getCursor(conn):
-    cursor=conn.cursor()
-    return cursor
+# def getCursor(conn):
+#     cursor=conn.cursor()
+#     return cursor
 
-def select(selectQueryString, param):
-    try:
-        conn = getConn()
-        cursor = getCursor(conn)
-        cursor.execute(selectQueryString, param)
-        return cursor.fetchall()
-    except MySQLdb.Error,e:
-        pass
-    finally:
-        cursor.close()
-        conn.close()
+# def select(selectQueryString, param):
+#     try:
+#         conn = getConn()
+#         cursor = getCursor(conn)
+#         cursor.execute(selectQueryString, param)
+#         return cursor.fetchall()
+#     except MySQLdb.Error,e:
+#         pass
+#     finally:
+#         cursor.close()
+#         conn.close()
 
-def execute(executeQueryString, param):
-    try:
-        conn = getConn()
-        cursor = getCursor(conn)
-        n = cursor.execute(executeQueryString, param)
-        return n
-    except MySQLdb.Error,e:
-        pass
-    finally:
-        cursor.close()
-        conn.close()
+# def execute(executeQueryString, param):
+#     try:
+#         conn = getConn()
+#         cursor = getCursor(conn)
+#         n = cursor.execute(executeQueryString, param)
+#         return n
+#     except MySQLdb.Error,e:
+#         pass
+#     finally:
+#         cursor.close()
+#         conn.close()

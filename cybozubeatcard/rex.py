@@ -8,6 +8,12 @@ Created on 2015-4-8
 import re
 
 def commando(command):
+    # 注册唯一标识ID
+    ptnUnqID = re.compile(ur'^(?i)id\s*(.*)$')
+    matchUnqID = ptnUnqID.match(command)
+    if matchUnqID:
+        return (113, matchUnqID.group(1))
+
     #输入用户名
     ptnInputLoginName = re.compile(ur'^(?i)user\s*(.*)$')
     matchInputLoginName = ptnInputLoginName.match(command)
