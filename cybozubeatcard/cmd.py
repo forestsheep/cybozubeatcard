@@ -18,6 +18,10 @@ def execute(wid, content):
     cmdRes = rex.commando(content)
     if cmdRes[0] == 113:
         return cmdRegUnqId(wid, cmdRes[1])
+    if cmdRes[0] == 114:
+        return cmdSeeAlive()
+    if cmdRes[0] == 115:
+        return cmdPause(wid)
     # if cmdRes[0] == 101:
     #     return cmdInputTempLoginName(wid, cmdRes[1])
     # if cmdRes[0] == 102:
@@ -44,10 +48,10 @@ def execute(wid, content):
     #     return cmdSetMail(wid, cmdRes[1])
     # if cmdRes[0] == 201:
     #     return getWeixinIdshorten(wid)
-    # if cmdRes[0] == 900:
-    #     return cmdHelp()
-    # if cmdRes[0] == 901:
-    #     return cmdHelpMore()
+    if cmdRes[0] == 900:
+        return cmdHelp()
+    if cmdRes[0] == 901:
+        return cmdHelpMore()
     return sayString
 
 '''
@@ -60,20 +64,75 @@ def cmdRegUnqId(wid, id):
     conn = sqlite3.connect("test.db")
     c = conn.cursor()
     sqlup = 'UPDATE users SET id = ? WHERE wx_id = ?'
-    sqlins = 'INSERT into users (wx_id, id) values(?, ?)'
+    sqlins = 'INSERT INTO users (wx_id, id) VALUES(?, ?)'
     try:
         c.execute(sqlup, (id, wid))
         if c.rowcount == 0:
             c.execute(sqlins, (wid, id))
         conn.commit()
+        return '更新成功您的id是' + id
     except Exception, ex:
         exstr = str(ex)
         if exstr.find('users.id') != -1 and exstr.find('UNIQUE') != -1:
             return "输入的id已经被注册了。"
         return "出现错误请联系开发者。"
-    c.close()
-    return '更新成功您的id是' + id
+    finally:
+        conn.close()
 
+
+'''
+cmd 114
+查看存活客户端
+'''
+def cmdSeeAlive():
+    conn = sqlite3.connect("test.db")
+    c = conn.cursor()
+    sql = 'SELECT last_used_id, count(*) FROM client WHERE (julianday(datetime(\"now\", \"localtime\")) - julianday(\"last_active_time\"))*24 < 1 GROUP BY last_used_id'
+    try:
+        c.execute(sql)
+        if c.rowcount == 0:
+            return '目前没有在线的终端'
+        else:
+            alive_amount = 0
+            # 目前先不用返回具体谁在线，总台数即可
+            # rtnStr = '目前现在的客户端如下：\n'
+            for row in c:
+                alive_amount += row[1]
+            return '目前在线的终端有' + str(alive_amount) + '台'
+    except Exception, ex:
+        exstr = str(ex)
+        if exstr.find('users.id') != -1 and exstr.find('UNIQUE') != -1:
+            return "输入的id已经被注册了。"
+        return "出现错误请联系开发者。\n" + exstr
+    finally:
+        conn.close()
+
+
+'''
+cmd 115
+暂停或激活服务
+'''
+def cmdPause(wid):
+    conn = sqlite3.connect("test.db")
+    c = conn.cursor()
+    sqlup = 'UPDATE users SET pause = (pause != 1) WHERE wx_id = ?'
+    sqlse = 'SELECT pause FROM users WHERE wx_id = ?'
+    try:
+        c.execute(sqlup, [wid])
+        if c.rowcount == 0:
+            return '也许是您还没有注册，输入  id+空格+您的id  来注册'
+        conn.commit()
+        c.execute(sqlse, [wid])
+        for row in c:
+            if row[0] == 0:
+                return '您的服务运行中'
+            else:
+                return '您暂停了服务'
+    except Exception, ex:
+        exstr = str(ex)
+        return "出现错误请联系开发者。\n" + exstr
+    finally:
+        conn.close()
 '''
 cmd 101
 把临时用户名输入数据库
@@ -340,7 +399,9 @@ cmd 900
 '''
 def cmdHelp():
     s = u'命令帮助\n'
-    s = u'注册唯一id：id + 空格 + 您的id\n'
+    s += u'注册唯一id：id + 空格 + 您的id\n'
+    s += u'查看在线终端数量：alive 或 al\n'
+    s += u'暂停或恢复服务：pause 或 p'
     # s += u'查看个人设定资料\n'
     # s += u'输入登录名：user + 空格 + 您的登录名\n'
     # s += u'输入密码：pw + 空格 + 您的密码\n'
@@ -357,7 +418,7 @@ def cmdHelp():
     return s
 
 '''
-cmd 900
+cmd 901
 帮助
 '''
 def cmdHelpMore():

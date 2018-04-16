@@ -6,6 +6,7 @@ from cybozubeatcard.weixinInterface import WeixinInterface
 from cybozubeatcard.api import Api
 from cybozubeatcard.apitest import ApiTest
 from cybozubeatcard.updateuser import UpdateUser
+from cybozubeatcard.clientinfo import ClientInfo
 from cybozubeatcard.getallusers import Getallusers
 from cybozubeatcard.safecheckrun import SafeCheckRun
 from com.boccaro.base import logg
@@ -17,12 +18,14 @@ urls = (
     '/api/test', 'ApiTest',
     '/api/updateuser', 'UpdateUser',
     '/api/getallusers', 'Getallusers',
+    '/api/clientinfo', 'ClientInfo',
     '/safecheckrun', 'SafeCheckRun'
 )
 
 class index:
     def GET(self):
         return "Hello, world!"
+    
 
 if __name__ == "__main__":
     logg.init(os.path.dirname(__file__))

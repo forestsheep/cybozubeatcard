@@ -21,31 +21,40 @@ class UpdateUser:
             name = jsonObj.get(u'loginname')
             pw = jsonObj.get(u'pw')
             time = jsonObj.get(u'time')
+            redict = dict()
             if id is None:
-                return "field #id# not found."
+                redict['success'] = False
+                redict['msg'] = 'field #id# is not found.'
+                return json.dumps(redict, ensure_ascii=False, indent=4)
             elif name is None:
-                return "field #loginname# not found."
+                redict['success'] = False
+                redict['msg'] = 'field #loginname# is not found'
+                return json.dumps(redict, ensure_ascii=False, indent=4)
             elif pw is None:
-                return "field #pw# not found."
+                redict['success'] = False
+                redict['msg'] = 'field #pw# is not found'
+                return json.dumps(redict, ensure_ascii=False, indent=4)
+                return "field #pw# is not found."
             elif time is None:
-                return "field #time# not found."
+                redict['success'] = False
+                redict['msg'] = 'field #time# is not found'
+                return json.dumps(redict, ensure_ascii=False, indent=4)
             
             conn = sqlite3.connect("test.db")
             c = conn.cursor()
-            c.execute("update users set loginname = ?, pw = ?, time = ? where id = ?", (name, pw, time, id))
+            c.execute("update users set loginname = ?, pw = ?, btime = ? where id = ?", (name, pw, time, id))
             if c.rowcount == 0:
-                redict = dict()
-                redict['success'] = 'false'
-                redict['msg'] = '0 row effect'
+                redict['success'] = False
+                redict['msg'] = '0 row effected'
                 return json.dumps(redict, ensure_ascii=False, indent=4)
             conn.commit()
-            redict = dict()
-            redict['success'] = 'true'
+            redict['success'] = True
+            redict['msg'] = str(c.rowcount) + ' row effected'
             return json.dumps(redict, ensure_ascii=False, indent=4)
 
         except Exception, ex:
             logg.warn('type:    ' + str(type(ex)) + '    msg:    ' + str(ex))
             redict = dict()
-            redict['type'] = str(type(ex))
+            redict['errtype'] = str(type(ex))
             redict['msg'] = str(ex)
             return json.dumps(redict, ensure_ascii=False, indent=4)

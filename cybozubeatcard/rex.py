@@ -14,6 +14,18 @@ def commando(command):
     if matchUnqID:
         return (113, matchUnqID.group(1))
 
+    # 查看存活客户端
+    ptnSeeAlive = re.compile(ur'^(?i)alive\s*$|^(?i)al\s*$')
+    matchSeeAlive = ptnSeeAlive.match(command)
+    if matchSeeAlive:
+        return (114, None)
+
+    # 暂停服务或激活服务
+    ptnPause = re.compile(ur'^(?i)pause\s*$|^(?i)p\s*$')
+    matchPause = ptnPause.match(command)
+    if matchPause:
+        return (115, None)
+
     #输入用户名
     ptnInputLoginName = re.compile(ur'^(?i)user\s*(.*)$')
     matchInputLoginName = ptnInputLoginName.match(command)
